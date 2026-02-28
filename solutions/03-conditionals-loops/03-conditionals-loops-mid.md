@@ -93,25 +93,70 @@
     }
 ```
 
-9.Vowel Or Consonant
+9.Vowel Or Consonant count
 ```
-    static void isVorC(String str){
-        char[] ch=str.toCharArry();
-        
+    static int[] isVorC(String str){
+        char[] ch=str.toCharArray();
+        int vowel=0,consonents=0;
+        for(int i=0;i<ch.length;i++){
+            if(ch[i]=='a' ||ch[i]=='e' ||ch[i]=='i' ||ch[i]=='o' ||ch[i]=='u'){
+                vowel++;
+            }else{
+                consonents++;
+            }
+        }
+        return new int[]{vowel,consonents};
     }
 ```
 
 10.Perfect Number In Java
 ```
-
+    static boolean isPerfect(int num){
+        int sum=0;
+        for(int i=1;i<=num/2;i++){
+            if(num%i==0){
+                sum+=i;
+            }
+        }
+        return num==sum;
+    }
 ```
 
 11.Kunal is allowed to go out with his friends only on the even days of a given month. Write a program to count the number of days he can go out in the month of August.
 ```
-
+    static int isAllowed(int days){
+        int count=0;
+        for(int i=1;i<=days;i++){
+            if(i%2==0){
+                count++;
+            }
+        }
+        return count;
+    }
 ```
 
 12.Write a program to print the sum of negative numbers, sum of positive even numbers and the sum of positive odd numbers from a list of numbers (N) entered by the user. The list terminates when the user enters a zero.
 ```
-
+    static int[] calculateSums(Scanner sc) {
+        int negativeSum = 0;
+        int positiveEvenSum = 0;
+        int positiveOddSum = 0;
+        System.out.println("Enter numbers (0 to stop):");
+        while (true) {
+            int num = sc.nextInt();
+            if (num == 0) {
+                break;
+            }
+            if (num < 0) {
+                negativeSum += num;
+            }
+            else if (num % 2 == 0) {
+                positiveEvenSum += num;
+            }
+            else {
+                positiveOddSum += num;
+            }
+        }
+        return new int[]{negativeSum, positiveEvenSum, positiveOddSum};
+    }
 ```
