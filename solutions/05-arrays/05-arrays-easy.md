@@ -79,11 +79,18 @@
 ```
 7. [Number of Good Pairs](https://leetcode.com/problems/number-of-good-pairs/)
 ```
-
+    public int numIdenticalPairs(int[] nums) {
+        int res=0;
+        int[] count=new int[101];
+        for(int i:nums){
+            res=res+count[i]++;
+        }
+        return res;
+    }
 ```
 8. [How Many Numbers Are Smaller Than the Current Number](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
 ```
-
+    
 ```
 9. [How Many Numbers Are Smaller Than the Current Number](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
 ```
