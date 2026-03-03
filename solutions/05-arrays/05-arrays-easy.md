@@ -90,15 +90,33 @@
 ```
 8. [How Many Numbers Are Smaller Than the Current Number](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
 ```
-    
-```
-9. [How Many Numbers Are Smaller Than the Current Number](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] res=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            int count=0;
+            for(int j=0;j<nums.length;j++){
+                if(nums[j]<nums[i]){
+                    count++;
+                }
+            }
+            res[i]=count;
+        }
+        return res;
+    }
 ```
 
-```
 10. [Check if the Sentence Is Pangram](https://leetcode.com/problems/check-if-the-sentence-is-pangram/)
 ```
-
+        //Pangram--> All the alphabets should be present in the sentence
+        public boolean checkIfPangram(String sentence) {
+        if(sentence.length()<26) return false;
+        for(char ch='a';ch<='z';ch++){
+            if(sentence.indexOf(ch)<0){
+                return false;
+            }
+        }
+        return true;
+    }
 ```
 11. [Count Items Matching a Rule](https://leetcode.com/problems/count-items-matching-a-rule/)
 ```
@@ -168,7 +186,7 @@
 ```
 
 ```
-28. [Minimum Cost to Move Chips to The Same Position](https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/)
+27. [Minimum Cost to Move Chips to The Same Position](https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/)
 ```
 
 ```
