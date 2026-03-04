@@ -180,11 +180,27 @@
 ```
 15. [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/)
 ```
-    
+
 ```
 16. [Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/)
 ```
-
+    public int findNumbers(int[] nums) {
+       int count=0;
+        for(int num:nums){
+            if(even(num)){
+                count++;
+            }
+        }
+       return count; 
+    }
+    static boolean even(int num){
+        int count=0;
+        while(num>0){
+            count++;
+            num=num/10;
+        }
+        return (count%2==0);
+    }
 ```
 17. [Transpose Matrix](https://leetcode.com/problems/transpose-matrix/)
 ```
@@ -192,7 +208,7 @@
 ```
 18. [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/)
 ```
-
+    
 ```
 19. [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/)
 ```
@@ -204,7 +220,17 @@
 ```
 21. [Two Sum](https://leetcode.com/problems/two-sum/)
 ```
-
+    public int[] twoSum(int[] nums, int target) {  
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int i =0;i<nums.length;i++){
+            int needed=target-nums[i];
+            if(map.containsKey(needed)){
+                return new int[]{map.get(needed),i};
+            }
+            map.put(nums[i],i);
+        }
+        return new int[]{-1,-1};
+    }
 ```
 22. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
 ```
