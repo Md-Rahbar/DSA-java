@@ -120,23 +120,67 @@
 ```
 11. [Count Items Matching a Rule](https://leetcode.com/problems/count-items-matching-a-rule/)
 ```
-
+    public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        int result=0;
+        for(int i=0;i<items.size();i++){
+            if(ruleKey.equals("type") && items.get(i).get(0).equals(ruleValue)) result++;
+            if(ruleKey.equals("color") && items.get(i).get(1).equals(ruleValue)) result++;
+            if(ruleKey.equals("name") && items.get(i).get(2).equals(ruleValue)) result++;
+        }
+        return result;
+    }
 ```
 12. [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/)
 ```
+    public int largestAltitude(int[] gain) {
+        int currentAlti=0;
+        int highestPoint=currentAlti;
 
+        for(int i:gain){
+            currentAlti+=i;
+            highestPoint=Math.max(currentAlti,highestPoint);
+        }
+    return highestPoint;
+    }
 ```
 13. [Flipping an Image](https://leetcode.com/problems/flipping-an-image/)
 ```
-
+    public int[][] flipAndInvertImage(int[][] image) {
+        for(int i=0;i<image.length;i++){
+        int start=0;
+        int end=image[i].length-1;
+        while(start<=end){
+            int temp=image[i][start]^1;
+            image[i][start]=image[i][end]^1;
+            image[i][end]=temp;
+            start++;
+            end--;
+        }
+    }
+    return image;
+    }
 ```
 14. [Cells with Odd Values in a Matrix](https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/)
 ```
+    public int oddCells(int m, int n, int[][] indices) {
+        int row[] = new int[m];
+        int col[] =new int[n];
+        int count=0;
 
+        for(int x[]: indices){
+            row[x[0]]++;
+            col[x[1]]++;
+        }
+
+        for(int i=0;i<m;i++)
+            for(int j=0;j<n;j++)
+                count+=(row[i]+col[j])%2;
+        return count;
+    }
 ```
 15. [Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/)
 ```
-
+    
 ```
 16. [Find Numbers with Even Number of Digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/)
 ```
