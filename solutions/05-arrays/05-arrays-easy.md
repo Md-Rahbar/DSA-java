@@ -204,11 +204,33 @@
 ```
 17. [Transpose Matrix](https://leetcode.com/problems/transpose-matrix/)
 ```
-
+    public int[][] transpose(int[][] matrix) {
+        int[][] result=new int[matrix[0].length][matrix.length];
+        for(int r=0;r<matrix.length;r++){
+            for(int c=0;c<matrix[0].length;c++){
+                result[c][r]=matrix[r][c];
+            }
+        }
+        return result;
+    }
 ```
 18. [Add to Array-Form of Integer](https://leetcode.com/problems/add-to-array-form-of-integer/)
 ```
-    
+    public List<Integer> addToArrayForm(int[] num, int k) {
+        List<Integer> res=new ArrayList<>();
+        int n=num.length;
+        for(int i=n-1;i>=0;i--){
+            k+=num[i];
+            res.add(k%10);
+            k/=10;
+        }
+        while(k>0){
+            res.add(k%10);
+            k/=10;
+        }
+        Collections.reverse(res);
+        return res;
+    }
 ```
 19. [Maximum Population Year](https://leetcode.com/problems/maximum-population-year/)
 ```
@@ -234,7 +256,14 @@
 ```
 22. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
 ```
-
+    public int[] sumZero(int n) {
+        int[] result=new int[n];
+        result[0]=n*(1-n)/2;
+        for(int i=1;i<n;++i){
+            result[i]=i;
+        }
+        return result;
+    }
 ```
 23. [Lucky Number In a Matrix](https://leetcode.com/problems/lucky-numbers-in-a-matrix/)
 ```
@@ -242,7 +271,18 @@
 ```
 24. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 ```
-
+    public int maxSubArray(int[] nums) {
+        int res=nums[0];
+        int total=0;
+        for(int n:nums){
+            if(total<0){
+                total=0;
+            }
+            total+=n;
+            res=Math.max(res,total);
+        }
+        return res;
+    }
 ```
 25. [Reshape the Matrix](https://leetcode.com/problems/reshape-the-matrix/)
 ```
@@ -250,13 +290,43 @@
 ```
 26. [Plus One](https://leetcode.com/problems/plus-one/)
 ```
-
+    public int[] plusOne(int[] digits) {
+        int n=digits.length;
+        for(int i=n-1;i>=0;i--){
+           if(digits[i]<9){
+            digits[i]++;
+            return digits;        
+            } 
+            digits[i]=0;
+        }
+        int[] res=new int[n+1];
+        res[0]=1;
+        return res;
+    }
 ```
 27. [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 ```
-
+    public int removeDuplicates(int[] nums) {
+        int i =0;
+        for(int j=1;j<nums.length;j++){
+            if(nums[i]!=nums[j]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
 ```
 27. [Minimum Cost to Move Chips to The Same Position](https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/)
 ```
+    public int minCostToMoveChips(int[] position) {
+        int odd=0;
+        int even=0;
 
+        for(int p:position){
+            if(p%2==0) even++;
+            else odd++;
+        }
+        return Math.min(even,odd);
+    }
 ```
