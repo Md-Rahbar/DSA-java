@@ -97,7 +97,25 @@
 ```
 9. [Sort Colors](https://leetcode.com/problems/sort-colors/)
 ```
+    public void sortColors(int[] nums) {
+       int zero=0,one=0,n=nums.length;
+       for(int num:nums){
+            if(num==0) zero++;
+            else if(num==1) one++;
+       } 
 
+       for(int i=0;i<zero;++i){
+        nums[i]=0;
+       }
+
+       for(int i=zero;i<zero+one;++i){
+        nums[i]=1;
+       }
+
+       for(int i =zero+one;i<n;++i){
+        nums[i]=2;
+       }
+    }
 ```
 10. [House Robber](https://leetcode.com/problems/house-robber/)
 ```
@@ -127,9 +145,46 @@ Total amount you can rob = 1 + 3 = 4.
 ```
 2. [First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
 ```
+    class Solution {
+    public int firstMissingPositive(int[] nums) {
+    int i=0;
+    while(i<nums.length){
+        int correct= nums[i]-1;
+        if(nums[i]>0 && nums[i]<=nums.length && nums[i]!=nums[correct]){
+            swap(nums,i,correct);
+        }else{
+            i++;
+        }
+    }
+    for(int j=0;j<nums.length;j++){
+        if(nums[j]!=j+1){
+            return j+1;
+        }
+    }
+    return  nums.length+1;
+    }
 
+    void swap(int[] nums,int first,int second){
+        int temp=nums[first];
+        nums[first]=nums[second];
+        nums[second]=temp;
+    }
+}
 ```
 3. [Good Array](https://leetcode.com/problems/check-if-it-is-a-good-array/)
 ```
+     public boolean isGoodArray(int[] nums) {
+        int x=nums[0];
+        int temp;
 
+        for(int n:nums){
+            while(n>0){
+                temp=x%n;
+                x=n;
+                n=temp;
+            }
+            if(x==1) return true;
+        }
+        return false;
+    }
 ```
