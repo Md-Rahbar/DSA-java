@@ -64,7 +64,6 @@
         return res;
     }
 
-
 ```
 7. [Jump Game](https://leetcode.com/problems/jump-game/)
 ```
@@ -102,13 +101,29 @@
 ```
 10. [House Robber](https://leetcode.com/problems/house-robber/)
 ```
+Input: nums = [1,2,3,1], alternate house robbery
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+    public int rob(int[] nums) {
+        int start=0;
+        int end=0;
+
+        for(int n:nums){
+            int temp=Math.max(end,start+n);
+            start=end;
+            end=temp;
+        }
+        return end;    
+    } 
 
 ```
 
 # Hard Ones
 1. [Max Value of Equation](https://leetcode.com/problems/max-value-of-equation/)
 ```
-
+    
 ```
 2. [First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
 ```
