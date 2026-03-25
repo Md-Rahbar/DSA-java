@@ -178,11 +178,58 @@
     ```
 - [Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
     ```
+    public int countNegatives(int[][] grid) {
+        int m=grid.length, n=grid[0].length;
+        int count=0;
+        int rows=m-1,cols=0;
 
+        while(rows>=0 && cols<n){
+            if(grid[rows][cols]<0){
+                count+=n-cols;
+                rows--;
+            }else{
+                cols++;
+            }
+        }
+        return count;
+    }
     ```
 - [Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
     ```
+        //Brute Force
+        public int[] intersection(int[] nums1, int[] nums2) {
+            Set<Integer> result = new HashSet<>();
+            for(int num1 : nums1) {
+                for(int num2 : nums2) {
+                    if(num1 == num2) {
+                        result.add(num1);
+                        break;
+                    }
+                }
+            }
+        }
 
+        //Optimzed Approach
+        public int[] intersection(int[] nums1, int[] nums2) {
+            Map<Integer,Integer> map= new HashMap<>();
+            for(int nums:nums1){
+                map.put(nums,map.getOrDefault(nums,0)+1); 
+            }
+
+            List<Integer> result=new ArrayList<>();
+            for(int nums:nums2){
+                if(map.containsKey(nums)){
+                    result.add(nums);
+                    map.remove(nums);
+                } 
+            }
+
+            int[] res=new int[result.size()];
+            for(int i=0;i<result.size();i++){
+                res[i]=result.get(i);
+            }
+            return res;
+        }
     ```
 - [Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
     ```
